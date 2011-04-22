@@ -1,0 +1,10 @@
+.svn/
+.DS_Store
+thumbs.db
+.directory
+~$*
+*~
+*.swp
+/.idea
+/target
+*.iml
