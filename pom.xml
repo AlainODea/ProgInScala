@@ -87,6 +87,7 @@
           </execution>
         </executions>
         <configuration>
+          <javaRebelPath>${user.home}/Applications/jrebel/jrebel.jar</javaRebelPath>
           <scalaVersion>${scala.version}</scalaVersion>
         </configuration>
       </plugin>
