@@ -1,0 +1,213 @@
+scala> def containsNeg(nums: List[Int]): Boolean = {
+     |   var exists = false
+     |   for (num <- nums)
+     |     if (num < 0)
+     |       exists = true
+     |   exists
+     | }
+containsNeg: (nums: List[Int])Boolean
+
+scala> containsNeg(List(1,2,3,4)
+     | )
+res1: Boolean = false
+
+scala> containsNeg(List(1, 2, -3, 4))
+res2: Boolean = true
+
+scala> def containsNeg(nums: List[Int]) = nums.exists(_ < 0)
+containsNeg: (nums: List[Int])Boolean
+
+scala> containsNeg(Nil)
+res3: Boolean = false
+
+scala> containsNeg(List(0, -1, -2))
+res4: Boolean = true
+
+scala> def containsOdd(nums: List[Int]): Boolean = {
+     |   var exists = false
+     |   for (num <- nums)
+     |     if (num % 2 == 1)
+     |       exists = true
+     |   exists
+     | }
+containsOdd: (nums: List[Int])Boolean
+
+scala> def containsOdd(nums: List[Int]): Boolean = nums.exists(_ % 2 == 1)
+containsOdd: (nums: List[Int])Boolean
+
+scala> def plainOldSum(x: Int, y: Int) = x + y
+plainOldSum: (x: Int,y: Int)Int
+
+scala> plainOldSum(1, 2)
+res5: Int = 3
+
+scala> def curriedSum(x: Int)(y: Int) = x + y
+curriedSum: (x: Int)(y: Int)Int
+
+scala> curriedSum(1)(2)
+res6: Int = 3
+
+scala> def first(x: Int) = (y: Int) => x + y
+first: (x: Int)(Int) => Int
+
+scala> val second = first(1)
+second: (Int) => Int = <function1>
+
+scala> second(2)
+res7: Int = 3
+
+scala> val onePlus = curriedSum(1) _
+onePlus: (Int) => Int = <function1>
+
+scala> onePlus(2)
+res8: Int = 3
+
+scala> val twoPlus = curriedSum(2) _
+twoPlus: (Int) => Int = <function1>
+
+scala> twoPlus(2)
+res9: Int = 4
+
+scala> def twice(op: Double => Double, x: Double) = op(op(x))
+twice: (op: (Double) => Double,x: Double)Double
+
+scala> twice(_ + 1.5)
+<console>:7: error: not enough arguments for method twice: (op: (Double) => Double,x: Double)Double.
+Unspecified value parameter x.
+       twice(_ + 1.5)
+            ^
+
+scala> twice(_ + 1, 5)
+res11: Double = 7.0
+
+scala> def withPrintWriter(file: File, op: PrintWriter => Unit) {
+     |   val writer = new PrintWriter(file)
+     |   try {
+     |     op(writer)
+     |   } finally {
+     |     writer.close()
+     |   }
+     | }
+<console>:5: error: not found: type File
+       def withPrintWriter(file: File, op: PrintWriter => Unit) {
+                                 ^
+<console>:5: error: not found: type PrintWriter
+       def withPrintWriter(file: File, op: PrintWriter => Unit) {
+                                           ^
+<console>:6: error: not found: type PrintWriter
+         val writer = new PrintWriter(file)
+                          ^
+
+scala> import java.io.PrintWriter
+import java.io.PrintWriter
+
+scala> def withPrintWriter(file: File, op: PrintWriter => Unit) {
+     |   val writer = new PrintWriter(file)
+     |   try {
+     |     op(writer)
+     |   } finally {
+     |     writer.close()
+     |   }
+     | }
+<console>:6: error: not found: type File
+       def withPrintWriter(file: File, op: PrintWriter => Unit) {
+                                 ^
+
+scala> import java.io.File
+import java.io.File
+
+scala> def withPrintWriter(file: File, op: PrintWriter => Unit) {
+     |   val writer = new PrintWriter(file)
+     |   try {
+     |     op(writer)
+     |   } finally {
+     |     writer.close()
+     |   }
+     | }
+withPrintWriter: (file: java.io.File,op: (java.io.PrintWriter) => Unit)Unit
+
+scala> withPrintWriter(
+     |   new File("date.txt"),
+     |   writer => writer.println(new java.util.Date)
+     | )
+
+scala> println("Hello, world!")
+Hello, world!
+
+scala> println { "Hello, world!" }
+Hello, world!
+
+scala> val g = "Hello, world!"
+g: java.lang.String = Hello, world!
+
+scala> g.substring { 7, 9 }
+<console>:1: error: ';' expected but ',' found.
+       g.substring { 7, 9 }
+                      ^
+
+scala> g.substring(7, 9)
+res15: java.lang.String = wo
+
+scala> def withPrintWriter(file: File)(op: PrintWriter => Unit) {
+     | val writer = new PrintWriter(file)
+     | try {
+     | op(writer)
+     | } finally {
+     | writer.close()
+     | }
+     | }
+withPrintWriter: (file: java.io.File)(op: (java.io.PrintWriter) => Unit)Unit
+
+scala> val file = new File("date.txt")
+file: java.io.File = date.txt
+
+scala> withPrintWriter(file) {
+     |   writer => writer.println(new java.util.Date)
+     | }
+
+scala> var assertionsEnabled = true
+assertionsEnabled: Boolean = true
+
+scala> def myAssert(predicate: () => Boolean) =
+     |   if (assertionsEnabled && !predicate())
+     |      throw new AssertionError
+myAssert: (predicate: () => Boolean)Unit
+
+scala> myAssert(() => 5 > 3)
+
+scala> myAssert(5 > 3)
+<console>:10: error: type mismatch;
+ found   : Boolean(true)
+ required: () => Boolean
+       myAssert(5 > 3)
+                  ^
+
+scala> def myAssert(predicate: => Boolean) =
+     |   if (assertionsEnabled && !predicate())
+     |      throw new AssertionError
+<console>:9: error: predicate of type Boolean does not take parameters
+         if (assertionsEnabled && !predicate())
+                                            ^
+
+scala> def myAssert(predicate: => Boolean) =
+     |   if (assertionsEnabled && !predicate())
+     |      throw new AssertionError
+<console>:9: error: predicate of type Boolean does not take parameters
+         if (assertionsEnabled && !predicate())
+                                            ^
+
+scala> def myAssert(predicate: => Boolean) =
+     |   if (assertionsEnabled && !predicate)
+     |      throw new AssertionError
+myAssert: (predicate: => Boolean)Unit
+
+scala> myAssert(5 > 3)
+
+scala> def byNameAssert(predicate: => Boolean) =
+     |   if (assertionsEnabled && !predicate)
+     |     throw new AssertionError
+byNameAssert: (predicate: => Boolean)Unit
+
+scala> byNameAssert(5 > 3)
+
+scala>
