@@ -41,4 +41,11 @@ class Rational(n: Int, d: Int) {
 
   def gcd(a: Int, b: Int): Int =
     if (b == 0) a else gcd(b, a % b)
+
+  def < (that: Rational) =
+    this.numer * that.denom > that.numer * this.denom
+  def > (that: Rational) =
+    that < this
+  def <= (that: Rational) = (this < that) || (this == that)
+  def >= (that: Rational) = (this > that) || (this == that)
 }
