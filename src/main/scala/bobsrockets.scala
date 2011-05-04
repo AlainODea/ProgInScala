@@ -13,3 +13,7 @@ package bobsrockets {
     class Booster2
   }
 }
+
+package bobsrockets {
+  class Ship
+}
