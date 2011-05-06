@@ -1,9 +1,9 @@
-import org.scalatest.Suite
+import org.scalatest.FunSuite
 import Element.elem
 
-class ElementSuite extends Suite {
+class ElementSuite extends FunSuite {
 
-  def testUniformElement() {
+  test("elem result should have passed width") {
     val ele = elem('x', 2, 3)
     assert(ele.width == 2)
   }
