@@ -1,19 +1,17 @@
-package bobsrockets {
-  package navigation {
-    package launch {
-      class Booster1
+package bobsdelights
+
+package navigation {
+  private[bobsdelights] class Navigator {
+    protected[navigation] def useStarChart() {}
+    class LegOfJourney {
+      private[Navigator] val distance = 100
     }
-    class MissionControl {
-      val booster1 = new launch.Booster1
-      val booster2 = new bobsrockets.launch.Booster2
-      val booster3 = new _root_.launch.Booster3
-    }
-  }
-  package launch {
-    class Booster2
+    private[this] var speed = 200
   }
 }
-
-package bobsrockets {
-  class Ship
+package launch {
+  import navigation._
+  object Vehicle {
+    private[launch] val guide = new Navigator
+  }
 }

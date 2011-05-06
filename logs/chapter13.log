@@ -1,0 +1,260 @@
+scala> :q
+[info] == console ==
+[success] Successful.
+[info] 
+[info] Total time: 176131 s, completed 5-May-2011 10:54:49 PM
+> console
+[info] 
+[info] == compile ==
+[info]   Source analysis: 0 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling main sources...
+[info] Nothing to compile.
+[info]   Post-analysis: 67 classes.
+[info] == compile ==
+[info] 
+[info] == test-compile ==
+[info]   Source analysis: 0 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling test sources...
+[info] Nothing to compile.
+[info]   Post-analysis: 0 classes.
+[info] == test-compile ==
+[info] 
+[info] == copy-resources ==
+[info] == copy-resources ==
+[info] 
+[info] == copy-test-resources ==
+[info] == copy-test-resources ==
+[info] 
+[info] == console ==
+[info] Starting scala interpreter...
+[info] 
+Welcome to Scala version 2.8.1.final (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_24).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> def showFruit(fruit: Fruit) {
+     |   import fruit._
+     |   println(name +"s are "+ color)
+     | }
+<console>:5: error: not found: type Fruit
+       def showFruit(fruit: Fruit) {
+                            ^
+
+scala> import bobs
+
+bobsdelights   bobsrockets
+
+scala> import bobsdelights.Fruit
+import bobsdelights.Fruit
+
+scala> import bobsdelights._    
+import bobsdelights._
+
+scala> import bobsdelights.Fruit
+
+Fruit    Fruits
+
+scala> import bobsdelights.Fruits._
+import bobsdelights.Fruits._
+
+scala> def showFruit(fruit: Fruit) {   
+     |   import fruit._                
+     |   println(name +"s are "+ color)
+     | }                               
+showFruit: (fruit: bobsdelights.Fruit)Unit
+
+scala> showFruit(Apple)
+apples are red
+
+scala> showFruit(Orange)
+oranges are orange
+
+scala> showFruit(Pear)  
+pears are yellowish
+
+scala> import java.util.regex
+import java.util.regex
+
+scala> class AStarB {
+     |   // Accesses java.util.regex.Pattern
+     |   val pat = regex.Pattern.compile("a*b")
+     | }
+defined class AStarB
+
+scala> import Fruits.{Apple, Orange}
+import Fruits.{Apple, Orange}
+
+scala> import Fruits.{Apple => McIntosh, Orange}
+import Fruits.{Apple=>McIntosh, Orange}
+
+scala> import java.sql.{Date => SDate}          
+import java.sql.{Date=>SDate}
+
+scala> import java.{sql => S}
+import java.{sql=>S}
+
+scala> import Fruits.{_}
+import Fruits._
+
+scala> import Fruits._  
+import Fruits._
+
+scala> import Fruits.{Apple => McIntosh, _}
+import Fruits.{Apple=>McIntosh, _}
+
+scala> import Fruits.{Pear => _, _}
+import Fruits.{Pear=>_, _}
+
+scala> import Notebooks._
+<console>:30: error: not found: value Notebooks
+       import Notebooks._
+              ^
+
+scala> import Fruits.{Apple => _, _}
+import Fruits.{Apple=>_, _}
+
+scala> class Outer {
+     |   class Inner {
+     |     private def f() { println("f") }
+     |     class InnerMost {
+     |       f() // OK
+     |     }
+     |   }
+     |   (new Inner).f() // error: f is not accessible
+     | }
+<console>:40: error: method f cannot be accessed in Outer.this.Inner
+         (new Inner).f() // error: f is not accessible
+                     ^
+
+scala> package p {
+<console>:1: error: illegal start of definition
+       package p {
+       ^
+
+scala> :q
+[info] == console ==
+[success] Successful.
+[info] 
+[info] Total time: 797 s, completed 5-May-2011 11:08:07 PM
+> compile 
+[info] 
+[info] == compile ==
+[info]   Source analysis: 1 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling main sources...
+[error] /home/alain/Documents/ProgInScala/src/main/scala/packageobjects.scala:9: method f cannot be accessed in p.Super
+[error]     (new Super).f() // error: f is not accessible
+[error]                 ^
+[error] one error found
+[info] == compile ==
+[error] Error running compile: Compilation failed
+[info] 
+[info] Total time: 0 s, completed 5-May-2011 11:08:11 PM
+> console             
+[info] 
+[info] == compile ==
+[info]   Source analysis: 7 new/modified, 0 indirectly invalidated, 1 removed.
+[info] Compiling main sources...
+[error] /home/alain/Documents/ProgInScala/src/main/scala/chainedpackages.scala:5: not found: type Ship
+[error]   def addShip() { new Ship }
+[error]                       ^
+[error] /home/alain/Documents/ProgInScala/src/main/scala/packageobjects.scala:9: method f cannot be accessed in p.Super
+[error]     (new Super).f() // error: f is not accessible
+[error]                 ^
+[error] two errors found
+[info] == compile ==
+[info] 
+[info] == copy-resources ==
+[info] == copy-resources ==
+[info] 
+[info] == copy-test-resources ==
+[info] == copy-test-resources ==
+[error] Error running compile: Compilation failed
+[info] 
+[info] Total time: 0 s, completed 5-May-2011 11:21:53 PM
+> console
+[info] 
+[info] == compile ==
+[info]   Source analysis: 7 new/modified, 0 indirectly invalidated, 1 removed.
+[info] Compiling main sources...
+[info] Compilation successful.
+[info]   Post-analysis: 76 classes.
+[info] == compile ==
+[info] 
+[info] == copy-test-resources ==
+[info] == copy-test-resources ==
+[info] 
+[info] == copy-resources ==
+[info] == copy-resources ==
+[info] 
+[info] == test-compile ==
+[info]   Source analysis: 0 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling test sources...
+[info] Nothing to compile.
+[info]   Post-analysis: 0 classes.
+[info] == test-compile ==
+[info] 
+[info] == console ==
+[info] Starting scala interpreter...
+[info] 
+Welcome to Scala version 2.8.1.final (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_24).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> printmenu.PrintMenu.main(Array.empty)
+<console>:6: error: value PrintMenu is not a member of package printmenu
+       printmenu.PrintMenu.main(Array.empty)
+                 ^
+
+scala> printmenu.PrintMenu                  
+<console>:6: error: value PrintMenu is not a member of package printmenu
+       printmenu.PrintMenu
+                 ^
+
+scala> printmenu.PrintMenu.
+
+asInstanceOf   isInstanceOf   toString
+
+scala> printmenu.PrintMenu.
+
+asInstanceOf   isInstanceOf   toString
+
+scala> :q                  
+[info] == console ==
+[success] Successful.
+[info] 
+[info] Total time: 66 s, completed 5-May-2011 11:23:57 PM
+> console
+[info] 
+[info] == compile ==
+[info]   Source analysis: 1 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling main sources...
+[info] Compilation successful.
+[info]   Post-analysis: 77 classes.
+[info] == compile ==
+[info] 
+[info] == test-compile ==
+[info]   Source analysis: 0 new/modified, 0 indirectly invalidated, 0 removed.
+[info] Compiling test sources...
+[info] Nothing to compile.
+[info]   Post-analysis: 0 classes.
+[info] == test-compile ==
+[info] 
+[info] == copy-test-resources ==
+[info] == copy-test-resources ==
+[info] 
+[info] == copy-resources ==
+[info] == copy-resources ==
+[info] 
+[info] == console ==
+[info] Starting scala interpreter...
+[info] 
+Welcome to Scala version 2.8.1.final (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_24).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> printmenu.PrintMenu.main(Array.empty)
+apples are red
+oranges are orange
+pears are yellowish
+
+scala> 
