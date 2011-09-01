@@ -6,8 +6,7 @@ thumbs.db
 *~
 *.swp
 /.idea
-/target
-/project/target
-/project/boot
-/test-output
+target
+!project/Build.scala
+project/*
 *.iml
