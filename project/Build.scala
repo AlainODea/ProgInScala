@@ -2,7 +2,10 @@ import sbt._
 import sbt.{Build => SbtBuild}
 
 object Build extends SbtBuild {
-  lazy val progInScala = Project("Programming in Scala 2nd Edition", file("."))
+  lazy val progInScala = Project("Programming in Scala 2nd Edition", file(".")) aggregate(
+    chapter01, chapter02, chapter03, chapter04, chapter05, chapter06, chapter07, chapter08, chapter09, chapter10,
+    chapter11, chapter12, chapter13, chapter14, chapter15, chapter16, chapter17, chapter18, chapter19)
+
   lazy val chapter01 = Project("A Scalable Language", file("Chapter_01"))
   lazy val chapter02 = Project("First Steps in Scala", file("Chapter_02"))
   lazy val chapter03 = Project("Next Steps in Scala", file("Chapter_03"))
