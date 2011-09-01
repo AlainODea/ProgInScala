@@ -1,6 +1,8 @@
 object Chapter19 {
   def main(args: Array[String]) {
     println("Hello")
+//    def doesNotCompile(q: Queue) {}
+    def doesCompile(q: Queue[AnyRef]) {}
   }
 }
 
@@ -27,7 +29,7 @@ object Queue {
   def apply[T](xs: T*): Queue[T] =
     new QueueImpl[T](xs.toList, Nil)
 
-  class QueueImpl[T] private (
+  class QueueImpl[T](
     private val leading: List[T],
     private val trailing: List[T]
   ) extends Queue[T] {
@@ -38,9 +40,9 @@ object Queue {
       else
         this
 
-    def head = mirror.leading.head
+    def head: T = mirror.leading.head
 
-    def tail = {
+    def tail: QueueImpl[T] = {
       val q = mirror
       new QueueImpl(q.leading.tail, q.trailing)
     }
