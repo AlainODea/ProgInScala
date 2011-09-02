@@ -1,0 +1,80 @@
+alain@alain-desktop:~/Documents/ProgInScala$ sbt
+[info] Set current project to User Plugins (in build file:/home/alain/.sbt/plugins/)
+[info] Set current project to Programming in Scala 2nd Edition (in build file:/home/alain/Documents/ProgInScala/)
+> console
+[info] Starting scala interpreter...
+[info]
+Welcome to Scala version 2.8.1.final (OpenJDK 64-Bit Server VM, Java 1.6.0_22).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala>
+[success] Total time: 9 s, completed 1-Sep-2011 11:11:01 PM
+> compile
+[info] Compiling 3 Scala sources to /home/alain/Documents/ProgInScala/Chapter_19/target/scala-2.8.1.final/classes...
+[error] /home/alain/Documents/ProgInScala/Chapter_19/src/main/scala/StrangeIntQueue.scala:6: ')' expected but eof found.
+[error] }
+[error]  ^
+[error] one error found
+[error] {file:/home/alain/Documents/ProgInScala/}Type Parameterization/compile: Compilation failed
+[error] Total time: 1 s, completed 1-Sep-2011 11:11:03 PM
+> console
+[info] Starting scala interpreter...
+[info]
+Welcome to Scala version 2.8.1.final (OpenJDK 64-Bit Server VM, Java 1.6.0_22).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val x: Queue[Any] = new StrangeIntQueue
+<console>:5: error: not found: type Queue
+       val x: Queue[Any] = new StrangeIntQueue
+              ^
+<console>:5: error: not found: type StrangeIntQueue
+       val x: Queue[Any] = new StrangeIntQueue
+                               ^
+
+scala>
+[success] Total time: 58 s, completed 1-Sep-2011 11:12:13 PM
+> compile
+[info] Compiling 3 Scala sources to /home/alain/Documents/ProgInScala/Chapter_19/target/scala-2.8.1.final/classes...
+[error] /home/alain/Documents/ProgInScala/Chapter_19/src/main/scala/StrangeIntQueue.scala:2: overriding method enqueue in class QueueImpl of type (x: Int)Queue.QueueImpl[Int];
+[error]  method enqueue needs `override' modifier
+[error]   def enqueue(x: Int) = {
+[error]       ^
+[error] one error found
+[error] {file:/home/alain/Documents/ProgInScala/}Type Parameterization/compile: Compilation failed
+[error] Total time: 1 s, completed 1-Sep-2011 11:12:15 PM
+> compile
+[info] Compiling 3 Scala sources to /home/alain/Documents/ProgInScala/Chapter_19/target/scala-2.8.1.final/classes...
+[success] Total time: 1 s, completed 1-Sep-2011 11:12:27 PM
+> console
+[info] Starting scala interpreter...
+[info]
+Welcome to Scala version 2.8.1.final (OpenJDK 64-Bit Server VM, Java 1.6.0_22).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val x: Queue[Any] = new StrangeIntQueue
+<console>:5: error: not found: type Queue
+       val x: Queue[Any] = new StrangeIntQueue
+              ^
+<console>:5: error: not found: type StrangeIntQueue
+       val x: Queue[Any] = new StrangeIntQueue
+                               ^
+
+scala> compile
+<console>:6: error: not found: value compile
+       compile
+       ^
+
+scala>
+[success] Total time: 549 s, completed 1-Sep-2011 11:21:39 PM
+> compile
+[info] Compiling 1 Scala source to /home/alain/Documents/ProgInScala/Chapter_19/target/scala-2.8.1.final/classes...
+[error] /home/alain/Documents/ProgInScala/Chapter_19/src/main/scala/Queues.scala:11: covariant type T occurs in contravariant position in type T of value x
+[error]   def enqueue(x: T)
+[error]               ^
+[error] one error found
+[error] {file:/home/alain/Documents/ProgInScala/}Type Parameterization/compile: Compilation failed
+[error] Total time: 0 s, completed 1-Sep-2011 11:21:41 PM
+>

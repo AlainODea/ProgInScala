@@ -1,0 +1,64 @@
+alain@alain-desktop:~$ cd Documents/ProgInScala/
+alain@alain-desktop:~/Documents/ProgInScala$ sbt
+[info] Set current project to User Plugins (in build file:/home/alain/.sbt/plugins/)
+[info] Set current project to Programming in Scala 2nd Edition (in build file:/home/alain/Documents/ProgInScala/)
+> console
+[info] Starting scala interpreter...
+[info]
+Welcome to Scala version 2.8.1.final (OpenJDK 64-Bit Server VM, Java 1.6.0_22).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val a1 = Array("abc")
+a1: Array[java.lang.String] = Array(abc)
+
+scala> val a2: Array[Any] = a1
+<console>:6: error: type mismatch;
+ found   : Array[java.lang.String]
+ required: Array[Any]
+       val a2: Array[Any] = a1
+                            ^
+
+scala> val a2: Array[Object] =
+     |
+
+a1                                classOf                           settings                          asInstanceOf                      bsh                               ch                                com
+css                               images                            isInstanceOf                      java                              javax                             jline                             junit
+org                               scala                             sun                               sunw                              toString                          ::                                AbstractMethodError
+AnyRef                            ArrayIndexOutOfBoundsException    BigDecimal                        BigInt                            BufferedIterator                  Character                         ClassCastException
+Collection                        Equiv                             Error                             Exception                         Fractional                        IllegalArgumentException          IndexOutOfBoundsException
+IndexedSeq                        Integer                           Integral                          Iterable                          Iterator                          List                              NoSuchElementException
+NullPointerException              NumberFormatException             Numeric                           Ordered                           Ordering                          PartialOrdering                   PartiallyOrdered
+RandomAccessSeq                   Range                             RuntimeException                  Seq                               Sequence                          Stream                            StringBuilder
+StringIndexOutOfBoundsException   Throwable                         Traversable                       TraversableOnce                   UnsupportedOperationException     Vector                            actors
+annotation                        collection                        compat                            concurrent                        io                                math                              mobile
+ref                               reflect                           runtime                           testing                           text                              tools                             util
+xml                               instrument                        management
+     |   a1.asInstanceOf[Array[Object]]
+a2: Array[java.lang.Object] = Array(abc)
+
+scala> a2(0) = 1
+<console>:8: error: type mismatch;
+ found   : Int(1)
+ required: java.lang.Object
+Note: primitive types are not implicitly converted to AnyRef.
+You can safely force boxing by casting x.asInstanceOf[AnyRef].
+       a2(0) = 1
+               ^
+
+scala> a2(0) = 1.asInstanceOf[AnyRef]
+java.lang.ArrayStoreException: java.lang.Integer
+	at .<init>(<console>:8)
+	at .<clinit>(<console>)
+	at RequestResult$.<init>(<console>:9)
+	at RequestResult$.<clinit>(<console>)
+	at RequestResult$scala_repl_result(<console>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at scala.tools.nsc.Interpreter$Request$$anonfun$loadAndRun$1$$anonfun$apply$17.apply(Interpreter.scala:988)
+	at scala.tools.nsc.Interpreter$Request$$anonfun$loadAndRun$1$$anonfun$apply$17.apply(Interpreter.scala:988)
+	at scala.util.control.Exception$Catch.apply(Exception.scala:79)
+	...
+scala>
